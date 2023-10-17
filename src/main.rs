@@ -17,14 +17,12 @@ fn prog_two() {
 //an argument and returns a string detailing the result of passing that reference to an inner
 //function.
 fn prog_three(s: &str) -> String {
-    // TODO: Implement code that showcases exception handling or Concurrency.
-
     // Returns a result containing an error if the string contains anything other than uppercase or lowercase letters and containing nothing otherwise.
     // The result return type takes two generic parameters, T and E, where T is the type stored in Ok and E is the type stored in Err.
     fn alphabetical_or_err(input: &str) -> Result<(),String> {
         for b in input.chars() {
             if (b < 'A' || b > 'Z') && (b < 'a' || b > 'z') {
-                return Err(format!("Not ASCII! Contains '{:}'", b));
+                return Err(format!("Non-alphabetical! Contains '{:}'", b));
             }
         }
         Ok(())
@@ -34,7 +32,7 @@ fn prog_three(s: &str) -> String {
     // what is done here.
     match alphabetical_or_err(s) {
         Ok(()) => format!("No error for string: {:}", s),
-        Err(e) => format!("Err: {:?}", e)
+        Err(e) => format!("Err: {:?} for string {:}", e, s)
     }
 }
 
