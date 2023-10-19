@@ -1,10 +1,48 @@
     use std::collections::LinkedList;
 
+
+    // Program 1 demonstrates the use of 4 data types
+    // with 2 methods of data manipulations
     fn prog_one() {
-        // TODO: Implement a program that utilizes at least 4 data types( example: int, float, string, boolean) 
-        // and showcase 2 in built methods(per data type total =8) showcasing data manipulations (example :sum, average string replace)
+
+            // Integer Data Type
+            let integer1: i32 = 5;
+            let integer2: i32 = 10;        
+            // Floating-point Data Type
+            let float1: f64 = 3.5;
+            let float2: f64 = 2.0;
+            // String Data Type
+            let string1: String = String::from("Group ");
+            let string2: String = String::from("Seven");
+            // Boolean Data Type
+            let is_true: bool = true;
+            let is_false: bool = false;
+        
+            // Integer Data Manipulation
+            let sum = integer1 + integer2;
+            let product = integer1 * integer2;
+        
+            // Floating-point Data Manipulation
+            let average = (float1 + float2) / 2.0;
+        
+            // String Data Manipulation
+            let concatenated_string = format!("{}{}", string1, string2);
+            let replaced_string = string1.replace("Group ", "Team ");
+        
+            // Boolean Data Manipulations
+            let and_result = is_true && is_false;
+            let or_result = is_true || is_false;
+        
+            // Print results
+            println!("Sum: {}", sum);
+            println!("Product: {}", product);
+            println!("Average: {:.2}", average); // {:.2} formats the float to 2 decimal places
+            println!("Concatenated String: {}", concatenated_string);
+            println!("Replaced String: {}", replaced_string);
+            println!("AND Result: {}", and_result);
+            println!("OR Result: {}", or_result);
+        }
     
-    }
     //Program 2 demonstrates the use of 2 major data structures (array and linked list) as well as 2 major control structures (for loop, and if-else). 
     //In this example, an array of “bpms” of songs is created. Once database implementation has occurred, this will be populated by data provided by the user.  
     //A linked list of the most popular songs based on streams bpm is created and populated. A for loop is used on both structures to calculate their average bpms. 
@@ -80,41 +118,4 @@
         println!("{:}",prog_three("this is not ok"));
         println!("{:}",prog_three("thisisn0t0k"));
 
-}
-
-
-//Program 3 demonstrates exception handling. Rust allows the use of the Result enum type to handle
-//recoverable errors. In this example, the outer function takes a reference to a string literal as
-//an argument and returns a string detailing the result of passing that reference to an inner
-//function.
-fn prog_three(s: &str) -> String {
-    // Returns a result containing an error if the string contains anything other than uppercase or lowercase letters and containing nothing otherwise.
-    // The result return type takes two generic parameters, T and E, where T is the type stored in Ok and E is the type stored in Err.
-    fn alphabetical_or_err(input: &str) -> Result<(),String> {
-        for b in input.chars() {
-            if (b < 'A' || b > 'Z') && (b < 'a' || b > 'z') {
-                return Err(format!("Non-alphabetical! Contains '{:}'", b));
-            }
-        }
-        Ok(())
-    }
-
-    // The Result type has to be unwrapped in some way. One option is via pattern matching, that is
-    // what is done here.
-    match alphabetical_or_err(s) {
-        Ok(()) => format!("No error for string: {:}", s),
-        Err(e) => format!("Err: {:?} for string {:}", e, s)
-    }
-}
-
-
-fn main() {
-    // Running and/or testing program one
-    prog_one();
-    // Running and/or testing program two
-    prog_two();
-    // Running and/or testing program three
-    println!("{:}",prog_three("thisisok"));
-    println!("{:}",prog_three("this is not ok"));
-    println!("{:}",prog_three("thisisn0t0k"));
 }
